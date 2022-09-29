@@ -81,7 +81,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app
-              key: CONSULE_HOST
+              key: CONSUL_HOST
         - name: CONSUL_PORT
           valueFrom:
             configMapKeyRef:
