@@ -46,7 +46,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app
-              key: DATABASE_URL
+              key: MYSQL_DATABASE_URL
         - name: MYSQL_DATABASE_PORT
           valueFrom:
             configMapKeyRef:
