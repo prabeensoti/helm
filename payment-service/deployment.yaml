@@ -56,7 +56,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app
-              key: BOOKING_DATABASE_NAME
+              key: PAYMENT_DATABASE_NAME
         - name: DATABSE_USERNAME
           valueFrom:
             secretKeyRef:
