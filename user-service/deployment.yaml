@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: saurav40/user-service
+        image: prabeensoti/user-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
