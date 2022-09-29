@@ -86,7 +86,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app
-              key: CONSULE_PORT
+              key: CONSUL_PORT
         - name: KAFKA_URL
           valueFrom:
             configMapKeyRef:

@@ -86,7 +86,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app
-              key: CONSULE_PORT
+              key: CONSUL_PORT
 ---
 apiVersion: v1
 kind: Service
