@@ -5,7 +5,7 @@ metadata:
   labels:
     app: notification-email-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: notification-email-service
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: notification-email-service
-        image: sourav40/notification-email-service
+        image: prabeensoti/notification-email-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

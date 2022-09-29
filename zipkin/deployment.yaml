@@ -3,23 +3,17 @@ kind: "Deployment"
 metadata:
   labels:
     provider: "fabric8"
-    project: "${project.artifactId}"
-    version: "${project.version}"
-    group: "io.fabric8.zipkin"
   name: "zipkin"
 spec:
   replicas: 1
   selector:
     matchLabels:
       provider: "fabric8"
-      project: "${project.artifactId}"
       group: "io.fabric8.zipkin"
   template:
     metadata:
       labels:
         provider: "fabric8"
-        project: "${project.artifactId}"
-        version: "${project.version}"
         group: "io.fabric8.zipkin"
     spec:
       containers:

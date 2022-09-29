@@ -48,6 +48,7 @@ data:
   HOTEL_DATABASE_NAME: hotel-db
   ROOM_DATABASE_NAME: room-db
   ORDER_DATABASE_NAME: order-db
+  BOOKING_DATABASE_NAME: booking-db
   PAYMENT_DATABASE_NAME: payment-db
   NOTIFICATION_DATABASE_NAME: notification-db
   REVIEW_DATABASE_NAME: review-db
