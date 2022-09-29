@@ -33,14 +33,14 @@ data:
   APP_PROFILE: prod
   MYSQL_DATABASE_URL: mysql-service.default.svc.cluster.local
   MYSQL_DATABASE_PORT: "3306"
-  MONGO_DATABASE_URL: mongo-mongodb.default.svc.cluster.local
+  MONGO_DATABASE_URL: mongo-service-mongodb.default.svc.cluster.local
   MONGO_DATABASE_PORT: "27017"
   REDISH_DATABASE_URL: redis-master.default.svc.cluster.local
   REDISH_DATABASE_PORT: "6379"
   ZIPKIN_URL: "zipkin.default.svc:9411"
-  CONSUL_HOST: consul-headless.default.svc.cluster.local
+  CONSUL_HOST: consul-service-headless.default.svc.cluster.local
   CONSUL_PORT: "8500"
-  KAFKA_URL: kafka-0.kafka-headless.default.svc.cluster.local
+  KAFKA_URL: kafka-service.default.svc.cluster.local
   KAFKA_PORT: "9092"
   PROTHEMUS_URL: kube-prometheus-prometheus.default.svc.cluster.local
   PROTHEMUS_PORT: "9090"
