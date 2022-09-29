@@ -35,4 +35,4 @@ spec:
       targetPort: 3000
   selector:
     app: frontend-service
-  type: ClusterIP
+  type: LoadBalancer

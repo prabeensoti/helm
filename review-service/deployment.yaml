@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: review-service
-        image: saurav40/review-service
+        image: sourav40/review-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

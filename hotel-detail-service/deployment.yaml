@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hotel-detail-service
-        image: saurav40/hotel-detail-service
+        image: sourav40/hotel-detail-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

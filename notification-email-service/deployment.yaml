@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: notification-email-service
-        image: saurav40/notification-email-service
+        image: sourav40/notification-email-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

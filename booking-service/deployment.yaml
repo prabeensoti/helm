@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: booking-service
-        image: saurav40/booking-service
+        image: sourav40/booking-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

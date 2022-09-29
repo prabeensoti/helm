@@ -4,10 +4,11 @@ metadata:
   name: nginx-default-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$3
 spec:
   rules:
-  - http:
+  - host: microservice.test
+    http:
       paths:
       - path: /api/user(/|$)(.*)
         pathType: Prefix
@@ -16,17 +17,38 @@ spec:
             name: user-service
             port:
               number: 8080
-      - path: /product(/|$)(.*)
+      - path: /api/hotel-room(/|$)(.*)
         pathType: Prefix
         backend:
           service: 
-            name: product-service
+            name: hotel-room-service
             port:
               number: 8080
-      - path: /order(/|$)(.*)
+      - path: /api/booking(/|$)(.*)
         pathType: Prefix
         backend:
           service: 
-            name: order-service
+            name: booking-service
+            port:
+              number: 8080
+      - path: /api/hotel-detail(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service: 
+            name: hotel-detail-service
+            port:
+              number: 8080
+      - path: /api/payment(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service: 
+            name: payment-service
+            port:
+              number: 8080
+      - path: /api/review(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service: 
+            name: review-service
             port:
               number: 8080

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: payment-service
-        image: saurav40/payment-service
+        image: sourav40/payment-service
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
