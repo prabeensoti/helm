@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysqldb
+type: Opaque
+data:
+  MYSQL_DATABASE_USERNAME: cm9vdA==
+  MYSQL_DATABASE_PASSWORD: cm9vdA==
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb
+type: Opaque
+data:
+  MONGO_DATABASE_USERNAME: cm9vdA==
+  MONGO_DATABASE_PASSWORD: cm9vdA==
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app
+type: Opaque
+data:
+  JWT_SECRET: TTlERkQ5RE4zS0RPN085REs3OEtEVTc4VU03OERETDc4TERMOTlKOFNMQTk5TEZKOUtLTDlGTDJKREsyS0s4Rkw0TExKN0tEREhTTEtTSkpT
+  JWT_PREFIX: QmVhcmVyIA==
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app
+data:
+  APP_PROFILE: prod
+  MYSQL_DATABASE_URL: mysql-service.default.svc.cluster.local
+  MYSQL_DATABASE_PORT: "3306"
+  MONGO_DATABASE_URL: mongo-mongodb.default.svc.cluster.local
+  MONGO_DATABASE_PORT: "27017"
+  REDISH_DATABASE_URL: redis-master.default.svc.cluster.local
+  REDISH_DATABASE_PORT: "6379"
+  ZIPKIN_URL: "zipkin.default.svc:9411"
+  CONSUL_HOST: consul-server
+  CONSUL_PORT: "8300"
+  KAFKA_URL: kafka-0.kafka-headless.default.svc.cluster.local
+  KAFKA_PORT: "9092"
+  PROTHEMUS_URL: kube-prometheus-prometheus.default.svc.cluster.local
+  PROTHEMUS_PORT: "9090"
+  USER_DATABASE_NAME: user-db
+  HOTEL_DATABASE_NAME: hotel-db
+  ROOM_DATABASE_NAME: room-db
+  ORDER_DATABASE_NAME: order-db
+  PAYMENT_DATABASE_NAME: payment-db
+  NOTIFICATION_DATABASE_NAME: notification-db
+  REVIEW_DATABASE_NAME: review-db

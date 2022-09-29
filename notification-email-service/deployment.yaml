@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-email-service
+  labels:
+    app: notification-email-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notification-email-service
+  template:
+    metadata:
+      labels:
+        app: notification-email-service
+    spec:
+      containers:
+      - name: notification-email-service
+        image: saurav40/notification-email-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 120
+          timeoutSeconds: 10
+          periodSeconds: 3
+          failureThreshold: 2
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 130
+          timeoutSeconds: 2
+          periodSeconds: 8
+          failureThreshold: 1
+        env:
+        - name: APP_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: APP_PROFILE
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: MYSQL_DATABASE_URL
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: MYSQL_DATABASE_PORT
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: NOTIFICATION_DATABASE_NAME
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysqldb
+              key: MYSQL_DATABASE_USERNAME
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysqldb
+              key: MYSQL_DATABASE_PASSWORD
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: app
+              key: JWT_SECRET
+        - name: JWT_PREFIX
+          valueFrom:
+            secretKeyRef:
+              name: app
+              key: JWT_PREFIX
+        - name: CONSUL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: CONSULE_HOST
+        - name: CONSUL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: CONSULE_PORT
+        - name: KAFKA_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: KAFKA_URL
+        - name: KAFKA_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app
+              key: KAFKA_PORT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-email-service
+  labels:
+    app: notification-email-service
+    spring-boot: "true"
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: notification-email-service
+  type: ClusterIP
